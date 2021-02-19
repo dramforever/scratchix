@@ -1,3 +1,4 @@
+# https://github.com/NixOS/nixpkgs/blob/master/pkgs/stdenv/linux/bootstrap-tools/scripts/unpack-bootstrap-tools.sh
 # Unpack the bootstrap tools tarball.
 echo Unpacking the bootstrap tools...
 $builder mkdir $out
