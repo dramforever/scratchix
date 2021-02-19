@@ -16,7 +16,7 @@ export CC="$bootstrapTools/bin/gcc -Wl,--dynamic-linker=$bootstrapTools/lib/ld-l
 export CXX="$bootstrapTools/bin/g++ -Wl,--dynamic-linker=$bootstrapTools/lib/ld-linux-x86-64.so.2 -Wl,--rpath=$bootstrapTools/lib -idirafter $bootstrapTools/include/c++/8.3.0 -idirafter $bootstrapTools/include/c++/8.3.0/x86_64-unknown-linux-gnu -idirafter $bootstrapTools/include/c++/8.3.0/backward -idirafter $bootstrapTools/include-glibc -idirafter $bootstrapTools/lib/gcc/x86_64-unknown-linux-gnu/8.3.0/include -idirafter $bootstrapTools/lib/gcc/x86_64-unknown-linux-gnu/8.3.0/include-fixed"
 export CPP="$bootstrapTools/bin/cpp -idirafter $bootstrapTools/include-glibc -idirafter $bootstrapTools/lib/gcc/x86_64-unknown-linux-gnu/8.3.0/include -idirafter $bootstrapTools/lib/gcc/x86_64-unknown-linux-gnu/8.3.0/include-fixed"
 
-< $src xz -d | tar x -C .
+tar -xf $src -C .
 
 sourceRoot="$(ls | head -1)"
 echo sourceRoot is "$sourceRoot"
