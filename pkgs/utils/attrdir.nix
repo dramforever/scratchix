@@ -4,7 +4,8 @@ with builtins;
 
 let
   dirContents = attrNames (readDir base);
-  attrset = listToAttrs (concatMap genAttr dirContents);
+  attrset = listToAttrs (concatMap genAttr dirContents)
+    // { recurseForDerivations = true; };
 
   genAttr = file:
     let
