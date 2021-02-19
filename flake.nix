@@ -1,5 +1,6 @@
 {
   outputs = { self }: {
-    legacyPackages.x86_64-linux = import ./pkgs/stage1;
+    packages.x86_64-linux = import ./nix/flattenTree.nix (import ./pkgs/stage1);
+    checks = self.packages;
   };
 }
