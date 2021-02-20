@@ -1,15 +1,18 @@
-{ stage0 }:
+{ stage0, wrappers }:
 
 { name
 , src
 , configureFlags ? []
 , makeFlags ? []
 , makeInstallFlags ? []
+, buildInputs ? []
 }:
 
 derivation {
   inherit name src;
+  inherit wrappers;
   inherit configureFlags makeFlags makeInstallFlags;
+  inherit buildInputs;
 
   system = "x86_64-linux"; # FIXME
 
