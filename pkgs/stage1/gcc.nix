@@ -13,6 +13,7 @@ mkDerivation {
   buildInputs = [ gmp mpfr mpc ];
 
   configureFlags = [
+    "--disable-bootstrap"
     "--with-newlib"
     "--without-headers"
     "--enable-initfini-array"
