@@ -13,6 +13,7 @@ mkDerivation {
   buildInputs = [ gmp mpfr mpc ];
 
   configureFlags = [
+    "--disable-libcc1"
     "--disable-bootstrap"
     "--with-newlib"
     "--without-headers"
