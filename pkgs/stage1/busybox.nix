@@ -5,26 +5,6 @@
 , linux-headers
 }:
 
-let
-    configParser = ''
-    function parseconfig {
-        while read LINE; do NAME=`echo "$LINE" | cut -d \  -f 1` OPTION=`echo "$LINE" | cut -d \  -f 2`
-
-            if ! [[ "$NAME" =~ ^CONFIG_ ]]; then continue; fi
-
-            echo "parseconfig: removing $NAME"
-            sed -i /$NAME'\(=\| \)'/d .config
-
-            echo "parseconfig: setting $NAME=$OPTION"
-            echo "$NAME=$OPTION" >> .config
-        done
-    }
-  '';
-
-
-
-
-in
 mkDerivation {
   name = "busybox-1.33.1";
 
@@ -42,7 +22,6 @@ mkDerivation {
 
   configurePhase = ''
     bash ${./busybox-config.sh}
-
   '';
 
   buildPhase = ''
@@ -54,7 +33,6 @@ mkDerivation {
     cp busybox $out/bin/;
     $out/bin/busybox --install -s $out/bin;
   '';
-
 
 
   buildInputs = [ linux-headers ];

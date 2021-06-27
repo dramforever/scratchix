@@ -19,6 +19,4 @@ mkDerivation {
   '';
   configurePhase = "";
 
-
-#  buildInputs = [ m4 ];
 }

@@ -12,8 +12,5 @@ mkDerivation {
 
   buildInputs = [ bison ];
 
-  configureFlags = [
-  ];
-
 }
 
