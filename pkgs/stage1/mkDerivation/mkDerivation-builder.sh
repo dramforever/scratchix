@@ -42,9 +42,15 @@ echo sourceRoot is "$sourceRoot"
 
 cd "$sourceRoot"
 type -p cpp
-./configure --prefix="$out" --host=x86_64-linux $configureFlags
-make -j$NIX_BUILD_CORES -l$NIX_BUILD_CORES $makeFlags
-make install $makeInstallFlags
+
+echo !!!!! CONFIG PHASE
+eval $configurePhase
+
+echo !!!!! BUILD PHASE
+eval $buildPhase
+
+echo !!!!! INSTALL PHASE
+eval $installPhase
 
 for path in $(find "$out/bin" "$out/lib" -type f -executable); do
   echo Shrinking RPATH of "$path"

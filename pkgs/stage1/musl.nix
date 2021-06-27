@@ -1,8 +1,7 @@
 { mkDerivation
 , fetchurl
-, binutils
-, bison
 , gcc
+, binutils
 }:
 
 mkDerivation {
@@ -16,7 +15,6 @@ mkDerivation {
     url = "https://musl.libc.org/releases/musl-1.2.2.tar.gz";
     hash = "sha256-m5aTIgEteW3CPdono1hmA0+mfY+2fg4sRckTw9QyGd0=";
   };
-
 
   configureFlags = [
     "--enable-shared"
