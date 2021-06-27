@@ -1,5 +1,7 @@
-{ mkDerivation, fetchurl
-, gmp, mpfr
+{ mkDerivation
+, fetchurl
+, gmp
+, mpfr
 }:
 
 mkDerivation {

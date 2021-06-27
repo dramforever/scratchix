@@ -14,19 +14,20 @@ let
       ext = elemAt matchResult 1;
       okay =
         (dirContents.${file} == "regular" && length matchResult == 2 && ext == "nix" && name != "default")
-          || dirContents.${file} == "directory";
+        || dirContents.${file} == "directory";
       contents = import (base + "/${file}");
       args = intersectAttrs (functionArgs contents) attrset;
     in
-      if okay
-      then [
-        {
-          name =
-            if dirContents.${file} == "directory"
-            then file else name;
-          value = contents args;
-        }
-      ]
-      else [];
+    if okay
+    then [
+      {
+        name =
+          if dirContents.${file} == "directory"
+          then file else name;
+        value = contents args;
+      }
+    ]
+    else [ ];
 
-in attrset
+in
+attrset

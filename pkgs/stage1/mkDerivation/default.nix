@@ -2,13 +2,15 @@
 
 { name
 , src
-, configureFlags ? []
-, makeFlags ? []
-, makeInstallFlags ? []
-, buildInputs ? []
-}:
+, builder ? ./mkDerivation-builder.sh
+, configureFlags ? [ ]
+, makeFlags ? [ ]
+, makeInstallFlags ? [ ]
+, buildInputs ? [ ]
+, ...
+}@args:
 
-derivation {
+derivation ( args // {
   inherit name src;
   inherit wrappers;
   inherit configureFlags makeFlags makeInstallFlags;
@@ -17,7 +19,7 @@ derivation {
   system = "x86_64-linux"; # FIXME
 
   builder = "${stage0.bootstrap-tools}/bin/bash";
-  args = [ "-e" ./builder.sh ];
+  args = [ "-e" builder ];
 
   bootstrapTools = stage0.bootstrap-tools;
-}
+})
